@@ -1,0 +1,16 @@
+read_verilog ./src/verilog/top.v
+read_verilog ../src/alu.v
+read_verilog ../src/compare.v
+read_verilog ../src/cpu.v
+read_verilog ../src/csrs.v
+read_verilog ../src/decode.v
+read_verilog ../src/forward.v
+read_verilog ../src/load.v
+read_verilog ../src/programcounter.v
+read_verilog ../src/program_rom.v
+read_verilog ../src/ram.v
+read_verilog ../src/registerfile.v
+read_verilog ../src/rom.v
+read_verilog ../src/soc.v
+read_verilog ../src/store.v
+read_verilog ../src/uart.v

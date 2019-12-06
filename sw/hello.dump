@@ -1,0 +1,86 @@
+
+hello.elf:     file format elf32-littleriscv
+
+
+Disassembly of section .text:
+
+00000000 <_start>:
+   0:	80004137          	lui	sp,0x80004
+   4:	03c000ef          	jal	ra,40 <main>
+   8:	0000006f          	j	8 <_start+0x8>
+
+0000000c <uart_print>:
+   c:	00054783          	lbu	a5,0(a0)
+  10:	00078e63          	beqz	a5,2c <uart_print+0x20>
+  14:	00150513          	addi	a0,a0,1
+  18:	20000737          	lui	a4,0x20000
+  1c:	00f70023          	sb	a5,0(a4) # 20000000 <main+0x1fffffc0>
+  20:	00054783          	lbu	a5,0(a0)
+  24:	00150513          	addi	a0,a0,1
+  28:	fe079ae3          	bnez	a5,1c <uart_print+0x10>
+  2c:	00008067          	ret
+
+00000030 <uart_init>:
+  30:	200007b7          	lui	a5,0x20000
+  34:	00100713          	li	a4,1
+  38:	00e78423          	sb	a4,8(a5) # 20000008 <main+0x1fffffc8>
+  3c:	00008067          	ret
+
+00000040 <main>:
+  40:	200007b7          	lui	a5,0x20000
+  44:	00100713          	li	a4,1
+  48:	00e78423          	sb	a4,8(a5) # 20000008 <main+0x1fffffc8>
+  4c:	100007b7          	lui	a5,0x10000
+  50:	00178793          	addi	a5,a5,1 # 10000001 <main+0xfffffc1>
+  54:	06800713          	li	a4,104
+  58:	200006b7          	lui	a3,0x20000
+  5c:	00e68023          	sb	a4,0(a3) # 20000000 <main+0x1fffffc0>
+  60:	0007c703          	lbu	a4,0(a5)
+  64:	00178793          	addi	a5,a5,1
+  68:	fe071ae3          	bnez	a4,5c <main+0x1c>
+  6c:	00000513          	li	a0,0
+  70:	00008067          	ret
+
+Disassembly of section .rodata:
+
+10000000 <.rodata>:
+10000000:	6568                	flw	fa0,76(a0)
+10000002:	6c6c                	flw	fa1,92(s0)
+10000004:	6972206f          	j	10022e9a <main+0x10022e5a>
+10000008:	21766373          	csrrsi	t1,0x217,12
+1000000c:	000a                	c.slli	zero,0x2
+	...
+
+Disassembly of section .riscv.attributes:
+
+00000000 <.riscv.attributes>:
+   0:	2f41                	jal	790 <main+0x750>
+   2:	0000                	unimp
+   4:	7200                	flw	fs0,32(a2)
+   6:	7369                	lui	t1,0xffffa
+   8:	01007663          	bgeu	zero,a6,14 <uart_print+0x8>
+   c:	0025                	c.nop	9
+   e:	0000                	unimp
+  10:	1004                	addi	s1,sp,32
+  12:	7205                	lui	tp,0xfffe1
+  14:	3376                	fld	ft6,376(sp)
+  16:	6932                	flw	fs2,12(sp)
+  18:	7032                	flw	ft0,44(sp)
+  1a:	5f30                	lw	a2,120(a4)
+  1c:	326d                	jal	fffff9c6 <main+0xfffff986>
+  1e:	3070                	fld	fa2,224(s0)
+  20:	615f 7032 5f30      	0x5f307032615f
+  26:	3266                	fld	ft4,120(sp)
+  28:	3070                	fld	fa2,224(s0)
+  2a:	645f 7032 0030      	0x307032645f
+
+Disassembly of section .comment:
+
+00000000 <.comment>:
+   0:	3a434347          	fmsub.d	ft6,ft6,ft4,ft7,rmm
+   4:	2820                	fld	fs0,80(s0)
+   6:	29554e47          	fmsub.s	ft8,fa0,fs5,ft5,rmm
+   a:	3920                	fld	fs0,112(a0)
+   c:	322e                	fld	ft4,232(sp)
+   e:	302e                	fld	ft0,232(sp)
+	...

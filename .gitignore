@@ -1,0 +1,13 @@
+a.out
+*.vcd
+tests/*.bin
+tests/*.dump
+tests/*.o
+tests/*.txt
+vvp/
+fpga/.Xil/
+fpga/*.jou
+fpga/*.log
+fpga/*.html
+fpga/*.xml
+fpga/output_files/
