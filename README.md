@@ -21,7 +21,7 @@ In the Vivado HLS Command Prompt, run the following command:
 > make
 ```
 
-# Memory Map
+## Memory Map
 
 | Base | Top | Description | Notes |
 | - | - | - | - |
